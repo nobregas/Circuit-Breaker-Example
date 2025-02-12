@@ -30,7 +30,7 @@ public class ReviewClientImpl implements ReviewClient {
     private final Map<Long, List<ReviewModel>> CACHE = new HashMap<>();
 
     @Override
-    @CircuitBreaker(name="reviewCB", fallbackMethod = "")
+    @CircuitBreaker(name="reviewCB", fallbackMethod = "findAllproductIdInCache")
     public List<ReviewModel> findAllByProductId(Long produtoId) {
         final List<ReviewModel> avaliacoes = executeReq(produtoId);
         return avaliacoes;
